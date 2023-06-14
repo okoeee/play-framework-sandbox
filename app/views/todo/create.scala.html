@@ -1,8 +1,16 @@
-@()
+@import helper._
+@import requests.TodoForm
+
+@(todoForm: Form[TodoForm])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
 
 @main("Create") {
-<section id="content">
-    <h1>新規作成</h1>
+<section>
+    <h1>New Item</h1>
+    @form(routes.HomeController.postCreate) {
+        @CSRF.formField @* <- takes a RequestHeader *@
+        @inputText(todoForm("content")) @* <- takes a MessagesProvider *@
+        <input type="submit">
+    }
 </section>
 
 }
