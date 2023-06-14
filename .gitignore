@@ -1,0 +1,10 @@
+target/
+project/target/
+project/project/
+project/project/target/
+.idea/
+.vscode
+.DS_Store
+.metals
+logs/
+dist/
