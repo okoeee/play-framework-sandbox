@@ -1,16 +1,20 @@
-@(todoList: List[models.Todo])
+@import helper._
+@import requests.TodoForm
 
-@main("Welcome") {
-@defining(play.core.PlayVersion.current) { version =>
+@(todoForm: Form[TodoForm], todoList: Seq[models.Todo])(implicit request: RequestHeader, messages: Messages)
 
-<section id="content">
-    <h1>TODO</h1>
-    <a href="/todo/create">作成</a>
-    <ul>
-        @for(todo <- todoList) {
-            <li>@todo.content</li>
+@main("Todo App") {
+    @form(routes.HomeController.post) {
+        @inputText(todoForm("content"))
+        @CSRF.formField
+        <input type="submit">
+
+        <br />
+
+        @if(!todoList.isEmpty) {
+            @for(todo <- todoList) {
+                <p>@todo.content</p>
+            }
         }
-    </ul>
-</section>
-}
+    }
 }

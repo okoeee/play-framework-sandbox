@@ -20,11 +20,11 @@ class TodoDao @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)(
   }
 
   def update(todo: Todo): Future[Unit] = {
-    db.run(Todos.filter(_.id == todo.id).map(_.content).update(todo.content)).map(_ => ())
+    db.run(Todos.filter(_.id === todo.id).map(_.content).update(todo.content)).map(_ => ())
   }
 
   def delete(todo: Todo): Future[Unit] = {
-    db.run(Todos.filter(_.id == todo.id).delete).map(_ => ())
+    db.run(Todos.filter(_.id === todo.id).delete).map(_ => ())
   }
 
   private class TodosTable(tag: Tag) extends Table[Todo](tag, "TODO") {
