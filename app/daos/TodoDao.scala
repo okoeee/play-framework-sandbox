@@ -15,6 +15,8 @@ class TodoDao @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)(
 
   def all: Future[Seq[Todo]] = db.run(Todos.result)
 
+  def findById(todo: Todo): Future[Option[Todo]] = db.run(Todos.filter(_.id === todo.id).result.headOption)
+
   def insert(todo: Todo): Future[Unit] = db.run(Todos += todo).map { _ =>
     ()
   }

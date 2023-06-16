@@ -1,20 +1,29 @@
 @import helper._
 @import requests.TodoForm
 
-@(todoForm: Form[TodoForm], todoList: Seq[models.Todo])(implicit request: RequestHeader, messages: Messages)
+@(todoList: Seq[models.Todo])(implicit request: RequestHeader, messages: Messages)
 
 @main("Todo App") {
-    @form(routes.HomeController.post) {
-        @inputText(todoForm("content"))
-        @CSRF.formField
-        <input type="submit">
-
-        <br />
-
-        @if(!todoList.isEmpty) {
-            @for(todo <- todoList) {
-                <p>@todo.content</p>
+    <a href="/todo/create">新規作成</a>
+    <br>
+    <table>
+        <thead>
+        <th>No</th>
+        <th>Todo</th>
+        </thead>
+        <tbody>
+            @for((todo, i) <- todoList.zipWithIndex) {
+            <tr>
+                <td>@(i+1)</td>
+                <td>@todo.content</td>
+                <td><button><a href="@routes.TodoController.edit(todo.id)">更新</a></button></td>
+                @form(routes.TodoController.delete(todo.id), Symbol("method") -> "POST") {
+                    @CSRF.formField
+                    <input type="hidden" name="_method" value="DELETE">
+                    <td><button>削除</button></td>
+                }
+            </tr>
             }
-        }
-    }
+        </tbody>
+    </table>
 }

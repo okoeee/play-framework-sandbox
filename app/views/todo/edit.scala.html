@@ -1,0 +1,12 @@
+@import helper._
+@import requests.TodoForm
+
+@(todoForm: Form[TodoForm], preTodo: Todo)(implicit request: RequestHeader, messages: Messages)
+
+@main("Edit Todo") {
+    @form(routes.TodoController.editAction(preTodo.id)) {
+        @CSRF.formField
+        @inputText(todoForm("content"))
+        <input type="submit">
+    }
+}
