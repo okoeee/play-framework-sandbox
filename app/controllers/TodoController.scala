@@ -1,7 +1,6 @@
 package controllers
 
 import scala.concurrent.ExecutionContext.Implicits.global
-
 import models.Todo
 
 import javax.inject._
@@ -12,6 +11,8 @@ import play.api.data.Forms.{mapping, nonEmptyText}
 import play.api.mvc._
 import _root_.requests.TodoForm
 import daos.TodoDao
+
+import scala.concurrent.Future
 
 @Singleton
 class TodoController @Inject()(todoDao: TodoDao, cc: ControllerComponents) extends AbstractController(cc) with play.api.i18n.I18nSupport {
@@ -35,12 +36,12 @@ class TodoController @Inject()(todoDao: TodoDao, cc: ControllerComponents) exten
       .bindFromRequest()
       .fold(
         formWithErrors => {
-          todoDao.all.map(todos => Ok(views.html.todo.create(formWithErrors)))
+          Future.successful(Ok(views.html.todo.create(formWithErrors)))
         },
         todo => {
           val content = todo.content
           todoDao.insert(Todo(0, content)) flatMap { _ =>
-            todoDao.all.map(todos => Redirect(routes.TodoController.index))
+            Future.successful(Redirect(routes.TodoController.index))
           }
         }
       )
