@@ -17,10 +17,14 @@
     <link rel="shortcut icon" type="image/png" href='@routes.Assets.versioned("images/favicon.png")'>
     <script src='@routes.Assets.versioned("javascripts/hello.js")' type="text/javascript"></script>
     <script src='@routes.Assets.versioned("javascripts/prism.js")' type="text/javascript"></script>
+    <!--  UIkit  -->
+    <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/uikit.min.css")'>
 </head>
 
-<body style="padding: 16px">
-    @content
+<body class="bg-gray h-100vh">
+    <div class="w-500px h-100vh uk-card uk-padding bg-white">
+        @content
+    </div>
 </body>
 
 </html>

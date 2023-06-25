@@ -4,26 +4,26 @@
 @(todoList: Seq[models.Todo])(implicit request: RequestHeader, messages: Messages)
 
 @main("Todo App") {
-    <a href="/todo/create">新規作成</a>
-    <br>
+    <h1>TODO</h1>
+    <div class="uk-text-right">
+        <a href="/todo/create" >+新規作成</a>
+    </div>
     <table>
-        <thead>
-        <th>No</th>
-        <th>Todo</th>
-        </thead>
-        <tbody>
-            @for((todo, i) <- todoList.zipWithIndex) {
-            <tr>
-                <td>@(i+1)</td>
-                <td>@todo.content</td>
-                <td><button><a href="@routes.TodoController.edit(todo.id)">変更</a></button></td>
-                @form(routes.TodoController.delete(todo.id), Symbol("method") -> "POST") {
+        @for((todo, i) <- todoList.zipWithIndex) {
+            <div class="card card-main uk-flex uk-flex-between uk-flex-middle">
+                <div class="flex-card-left">
+                    <p>@todo.content</p>
+                </div>
+                <div class="flex-card-right uk-flex uk-flex-between uk-flex-middle">
+                    <span><button><a href="@routes.TodoController.edit(todo.id)">変更</a></button></span>
+                    @form(routes.TodoController.delete(todo.id), Symbol("method") -> "POST") {
                     @CSRF.formField
                     <input type="hidden" name="_method" value="DELETE">
-                    <td><button>削除</button></td>
+                    <span><button>削除</button></span>
+                </div>
                 }
-            </tr>
-            }
-        </tbody>
+            </div>
+            <hr style="margin: 4px 0">
+        }
     </table>
 }
