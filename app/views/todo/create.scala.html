@@ -4,7 +4,7 @@
 @(todoForm: Form[TodoForm])(implicit request: RequestHeader, messages: Messages)
 
 @main("Create Todo") {
-    @form(routes.TodoController.post) {
+    @form(routes.TodoController.createAction) {
         @CSRF.formField
         @inputText(todoForm("content"))
         <input type="submit">

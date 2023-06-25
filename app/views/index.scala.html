@@ -16,7 +16,7 @@
             <tr>
                 <td>@(i+1)</td>
                 <td>@todo.content</td>
-                <td><button><a href="@routes.TodoController.edit(todo.id)">更新</a></button></td>
+                <td><button><a href="@routes.TodoController.edit(todo.id)">変更</a></button></td>
                 @form(routes.TodoController.delete(todo.id), Symbol("method") -> "POST") {
                     @CSRF.formField
                     <input type="hidden" name="_method" value="DELETE">

@@ -6,7 +6,7 @@
 # An example controller showing a sample home page
 GET / controllers.TodoController.index
 GET /todo/create controllers.TodoController.create
-POST /todo/create controllers.TodoController.post
+POST /todo/create controllers.TodoController.createAction
 GET /todo/edit/:id controllers.TodoController.edit(id: Long)
 POST /todo/edit/:id controllers.TodoController.editAction(id: Long)
 POST /todo/delete/:id controllers.TodoController.delete(id: Long)

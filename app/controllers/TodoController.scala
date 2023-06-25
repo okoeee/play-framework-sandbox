@@ -31,7 +31,7 @@ class TodoController @Inject()(todoDao: TodoDao, cc: ControllerComponents) exten
     Ok(views.html.todo.create(todoForm))
   }
 
-  def post: Action[AnyContent] = Action.async { implicit request =>
+  def createAction: Action[AnyContent] = Action.async { implicit request =>
     todoForm
       .bindFromRequest()
       .fold(
