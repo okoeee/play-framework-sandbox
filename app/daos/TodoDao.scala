@@ -29,6 +29,20 @@ class TodoDao @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)(
     db.run(Todos.filter(_.id === todo.id).delete).map(_ => ())
   }
 
+  def sample = {
+    val todosQuery = Todos.filter(_.id === 1L)
+    val action = for {
+      todos <- todosQuery.result
+      _ <- Todos += Todo(0, "test")
+    } yield ()
+    db.run(action.transactionally)
+
+    val q1 = Todos += Todo(0, "test")
+    val q2 = Todos += Todo(0, "test")
+    DBIO.sequence(Seq(q1, q2))
+
+  }
+
   private class TodosTable(tag: Tag) extends Table[Todo](tag, "TODO") {
     def id = column[Long]("ID", O.PrimaryKey, O.AutoInc)
     def content = column[String]("CONTENT")
