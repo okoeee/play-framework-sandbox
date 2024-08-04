@@ -1,7 +1,7 @@
 lazy val root = (project in file("."))
   .enablePlugins(PlayScala)
   .settings(
-    name := """play-slick-sample""",
+    name := """play-framework-sandbox""",
     organization := "com.example",
     version := "1.0-SNAPSHOT",
     scalaVersion := "2.13.11",
