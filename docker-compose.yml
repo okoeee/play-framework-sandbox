@@ -1,0 +1,10 @@
+
+services:
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./public/swagger/swagger.json:/swagger/swagger.json
+    environment:
+      SWAGGER_JSON: /swagger/swagger.json
