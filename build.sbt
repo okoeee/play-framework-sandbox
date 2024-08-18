@@ -1,5 +1,5 @@
 lazy val root = (project in file("."))
-  .enablePlugins(PlayScala)
+  .enablePlugins(PlayScala, SwaggerPlugin)
   .settings(
     name := """play-framework-sandbox""",
     organization := "com.example",
@@ -10,7 +10,7 @@ lazy val root = (project in file("."))
       "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test,
       "com.h2database" % "h2" % "1.4.200",
       "com.typesafe.play" %% "play-slick" % "5.1.0",
-      "com.typesafe.play" %% "play-slick-evolutions" % "5.1.0"
+      "com.typesafe.play" %% "play-slick-evolutions" % "5.1.0",
     ),
     scalacOptions ++= Seq(
       "-feature",
@@ -18,3 +18,8 @@ lazy val root = (project in file("."))
       "-Xfatal-warnings"
     )
   )
+
+// ドメインモデルを定義しているパッケージを指定
+swaggerDomainNameSpaces := Seq("models")
+// swagger.jsonの出力先
+swaggerTarget := baseDirectory.value / "public" / "swagger"
