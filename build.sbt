@@ -23,3 +23,5 @@ lazy val root = (project in file("."))
 swaggerDomainNameSpaces := Seq("models")
 // swagger.jsonの出力先
 swaggerTarget := baseDirectory.value / "public" / "swagger"
+// swagger.jsonをformatして出力する
+swaggerPrettyJson := true

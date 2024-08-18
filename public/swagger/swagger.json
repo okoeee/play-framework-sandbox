@@ -1,1 +1,79 @@
-{"paths":{"/":{"get":{"operationId":"index","tags":["routes"]}},"/todo/create":{"post":{"operationId":"createAction","tags":["routes"]},"get":{"operationId":"create","tags":["routes"]}},"/todo/edit/{id}":{"post":{"operationId":"editAction","tags":["routes"],"parameters":[{"in":"path","name":"id","required":true,"type":"integer","format":"int64"}]},"get":{"operationId":"edit","tags":["routes"],"parameters":[{"in":"path","name":"id","required":true,"type":"integer","format":"int64"}]}},"/todo/delete/{id}":{"post":{"operationId":"delete","tags":["routes"],"parameters":[{"in":"path","name":"id","required":true,"type":"integer","format":"int64"}]}},"/assets/{file}":{"get":{"operationId":"versioned","tags":["routes"],"parameters":[{"in":"path","name":"file","required":true,"type":"asset"}]}}},"produces":["application/json"],"definitions":{},"swagger":"2.0","consumes":["application/json"],"info":{"description":"This is test for Play Framework","title":"Play Framework Sandbox","version":"1.0-SNAPSHOT"},"tags":[]}
+{
+  "paths" : {
+    "/" : {
+      "get" : {
+        "operationId" : "index",
+        "tags" : [ "routes" ]
+      }
+    },
+    "/todo/create" : {
+      "post" : {
+        "operationId" : "createAction",
+        "tags" : [ "routes" ]
+      },
+      "get" : {
+        "operationId" : "create",
+        "tags" : [ "routes" ]
+      }
+    },
+    "/todo/edit/{id}" : {
+      "post" : {
+        "operationId" : "editAction",
+        "tags" : [ "routes" ],
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "id",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ]
+      },
+      "get" : {
+        "operationId" : "edit",
+        "tags" : [ "routes" ],
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "id",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ]
+      }
+    },
+    "/todo/delete/{id}" : {
+      "post" : {
+        "operationId" : "delete",
+        "tags" : [ "routes" ],
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "id",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ]
+      }
+    },
+    "/assets/{file}" : {
+      "get" : {
+        "operationId" : "versioned",
+        "tags" : [ "routes" ],
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "file",
+          "required" : true,
+          "type" : "asset"
+        } ]
+      }
+    }
+  },
+  "produces" : [ "application/json" ],
+  "definitions" : { },
+  "swagger" : "2.0",
+  "consumes" : [ "application/json" ],
+  "info" : {
+    "description" : "This is test for Play Framework",
+    "title" : "Play Framework Sandbox",
+    "version" : "1.0-SNAPSHOT"
+  },
+  "tags" : [ ]
+}
