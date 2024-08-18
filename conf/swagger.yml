@@ -1,0 +1,8 @@
+swagger: "2.0"
+info:
+  title: "Play Framework Sandbox"
+  description: "This is test for Play Framework"
+consumes:
+  - application/json
+produces:
+  - application/json
