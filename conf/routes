@@ -4,6 +4,12 @@
 # ~~~~
 
 # An example controller showing a sample home page
+
+###
+# summary: Todoのトップページ
+# responses:
+#  200: Todoの一覧を取得
+###
 GET / controllers.TodoController.index
 GET /todo/create controllers.TodoController.create
 POST /todo/create controllers.TodoController.createAction

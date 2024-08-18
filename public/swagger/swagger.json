@@ -3,7 +3,11 @@
     "/" : {
       "get" : {
         "operationId" : "index",
-        "tags" : [ "routes" ]
+        "tags" : [ "routes" ],
+        "summary" : "Todoのトップページ",
+        "responses" : {
+          "200" : "Todoの一覧を取得"
+        }
       }
     },
     "/todo/create" : {
